@@ -12,7 +12,6 @@ import Dota.WebAPI.Types.Player as Types
 import Dota.WebAPI.Types.League as Types
 
 import APIBuilder
-
 import Data.Text (Text)
 
 type WebAPI a = API WebAPIKey () a

@@ -2,11 +2,10 @@ module Dota.WebAPI.Routes where
 
 import Dota.WebAPI.Types
 
+import APIBuilder
 import Control.Applicative ((<$>))
 import qualified Data.DateTime as DateTime (toSeconds)
 import qualified Data.Text as T
-
-import APIBuilder
 
 builder :: Builder
 builder = Builder "Dota WebAPI" "https://api.steampowered.com/IDOTA2Match_570" id id
