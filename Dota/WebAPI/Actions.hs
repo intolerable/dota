@@ -1,12 +1,8 @@
 module Dota.WebAPI.Actions where
 
-import Control.Monad.Trans.Maybe
-
 import Dota.WebAPI.Routes
 import Dota.WebAPI.Parser ()
-import Control.Monad.IO.Class
 import Dota.WebAPI.Types
-import Control.Monad.Trans.Either
 
 import APIBuilder
 

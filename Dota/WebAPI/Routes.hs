@@ -3,19 +3,8 @@ module Dota.WebAPI.Routes where
 import Dota.WebAPI.Types
 
 import Control.Applicative ((<$>))
-import Control.Arrow ((***))
-import Control.Monad.IO.Class (liftIO)
-import Control.Monad.Trans.Class (lift)
-import Control.Monad.Trans.Maybe (MaybeT(..))
-import Control.Monad.Trans.Reader (ask)
-import Data.Maybe (isJust, fromJust)
-import Data.Monoid ((<>))
-import Network.HTTP.Conduit hiding (path)
-import qualified Data.ByteString.Lazy as BS
 import qualified Data.DateTime as DateTime (toSeconds)
 import qualified Data.Text as T
-import qualified Data.Text.Encoding as T (encodeUtf8)
-import qualified Network.HTTP.Base as HTTP (urlEncodeVars)
 
 import APIBuilder
 
