@@ -1,6 +1,5 @@
 module Dota.WebAPI.Types
-  ( webAPI
-  , WebAPI
+  ( WebAPI
   , WebAPIKey
   , module Types ) where
 
@@ -12,14 +11,12 @@ import Dota.WebAPI.Types.Match as Types
 import Dota.WebAPI.Types.Player as Types
 import Dota.WebAPI.Types.League as Types
 
+import APIBuilder
+
 import Control.Monad.Trans.Maybe
 import Control.Monad.Trans.Reader
 import qualified Data.Text as T
 
-type WebAPI a = MaybeT (ReaderT WebAPIKey IO) a
-
-webAPI :: WebAPIKey -> WebAPI a -> IO (Maybe a)
-webAPI key act =
-  runReaderT (runMaybeT act) key
+type WebAPI a = API WebAPIKey () a
 
 type WebAPIKey = T.Text

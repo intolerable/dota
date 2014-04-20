@@ -17,51 +17,21 @@ import qualified Data.Text as T
 import qualified Data.Text.Encoding as T (encodeUtf8)
 import qualified Network.HTTP.Base as HTTP (urlEncodeVars)
 
-type URLFragment = T.Text
-type URLParam = (T.Text, Maybe T.Text)
+import APIBuilder
 
-data Route a = Route { fragments :: [URLFragment]
-                     , urlParams :: [URLParam]
-                     , httpMethod :: T.Text } deriving (Show, Read, Eq)
+builder :: Builder
+builder = Builder "Dota WebAPI" "https://api.steampowered.com/IDOTA2Match_570" id id
 
-(=.) :: T.Text -> Maybe T.Text -> URLParam
-k =. v = (k, v)
+webAPI :: WebAPIKey -> WebAPI a -> IO (Either (APIError ()) a)
+webAPI key act = 
+  runAPI builder key $ do
+    customizeRoute (addAPIKey key)
+    act
 
-baseURL :: T.Text
-baseURL = "https://api.steampowered.com/IDOTA2Match_570/"
-
-runRouteT :: Route a -> WebAPI BS.ByteString
-runRouteT route = do
-  key <- lift ask
-  req <- MaybeT . return $ routeRequest key route
-  let req' = req { responseTimeout = Just 10000000 }
-  resp <- liftIO $ withManager (httpLbs req')
-  return $ responseBody resp
-
-routeURL :: Route a -> T.Text
-routeURL (Route fs ps _) = 
-  let path = T.intercalate "/" fs
-  in baseURL <> path <> "/?" <> buildParams ps
-
-routeRequest :: WebAPIKey -> Route a -> Maybe Request
-routeRequest key route = 
-  let finalRoute = addAPIKey key route in
-  case parseUrl (T.unpack $ routeURL finalRoute) of
-    Just url -> Just $ url { method = T.encodeUtf8 (httpMethod route) }
-    Nothing -> Nothing
-
-addAPIKey :: WebAPIKey -> Route a -> Route a
+addAPIKey :: WebAPIKey -> Route -> Route
 addAPIKey key r@(Route _ params _) = r { urlParams = ("key", Just key):params }
 
-buildParams :: [URLParam] -> T.Text
-buildParams = T.pack . HTTP.urlEncodeVars . mapBoth T.unpack . dropSndMaybes
-  where dropSndMaybes = map (fmap fromJust) . filter (isJust . snd) 
-  -- this code is disgusting, fix this shit
-
-mapBoth :: (a -> b) -> [(a, a)] -> [(b, b)]
-mapBoth f = map (f *** f)
-
-matchHistoryRoute :: MatchHistorySettings -> Route MatchHistory
+matchHistoryRoute :: MatchHistorySettings -> Route
 matchHistoryRoute mhs = Route [ "GetMatchHistory", "V001" ]
                               [ "player_name" =. withPlayer mhs
                               , "hero_id" =. (T.pack . show <$> withHero mhs)
@@ -72,12 +42,12 @@ matchHistoryRoute mhs = Route [ "GetMatchHistory", "V001" ]
                               , "start_at_match_id" =. (T.pack . show . pred . unMatchID <$> beforeMatch mhs) ]
                               "GET"
 
-matchDetailsRoute :: MatchID -> Route Match
+matchDetailsRoute :: MatchID -> Route
 matchDetailsRoute mID = Route [ "GetMatchDetails", "V001" ]
                               [ "match_id" =. (Just . T.pack . show $ unMatchID mID) ]
                               "GET"
 
-leagueListingRoute :: Route League
+leagueListingRoute :: Route
 leagueListingRoute = Route [ "GetLeagueListing", "v1" ]
                            [ ]
                            "GET"

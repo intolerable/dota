@@ -14,6 +14,13 @@
   (major1) == 0 && (major2) <  7 || \
   (major1) == 0 && (major2) == 7 && (minor) <= 0)
 
+/* package api-builder-0.1.0.0 */
+#define VERSION_api_builder "0.1.0.0"
+#define MIN_VERSION_api_builder(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  1 || \
+  (major1) == 0 && (major2) == 1 && (minor) <= 0)
+
 /* package base-4.7.0.0 */
 #define VERSION_base "4.7.0.0"
 #define MIN_VERSION_base(major1,major2,minor) (\
@@ -41,6 +48,13 @@
   (major1) <  0 || \
   (major1) == 0 && (major2) <  2 || \
   (major1) == 0 && (major2) == 2 && (minor) <= 1)
+
+/* package either-4.1.1 */
+#define VERSION_either "4.1.1"
+#define MIN_VERSION_either(major1,major2,minor) (\
+  (major1) <  4 || \
+  (major1) == 4 && (major2) <  1 || \
+  (major1) == 4 && (major2) == 1 && (minor) <= 1)
 
 /* package http-conduit-2.1.1 */
 #define VERSION_http_conduit "2.1.1"
