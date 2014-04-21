@@ -29,7 +29,7 @@ instance FromJSON Player where
     let kda' = (,,) <$> o .: "kills"
                     <*> o .: "deaths"
                     <*> o .: "assists"
-    Player <$> liftM (fmap AccountID) (o .: "account_id")
+    Player <$> liftM (fmap AccountID) (o .:? "account_id")
            <*> (toEnum <$> o .: "hero_id")
            <*> kda'
            <*> o .: "level"
