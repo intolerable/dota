@@ -4,6 +4,7 @@ import Dota.WebAPI.Types.Heroes
 import Dota.WebAPI.Types.Basics
 
 import Control.Applicative
+import Control.Monad (liftM)
 import Data.Monoid
 import Data.Aeson
 import Data.Aeson.Types (Parser)
@@ -28,7 +29,7 @@ instance FromJSON Player where
     let kda' = (,,) <$> o .: "kills"
                     <*> o .: "deaths"
                     <*> o .: "assists"
-    Player <$> (o .: "account_id" >>= return . fmap AccountID)
+    Player <$> liftM (fmap AccountID) (o .: "account_id")
            <*> (heroFromID <$> o .: "hero_id")
            <*> kda'
            <*> o .: "level"
@@ -56,7 +57,7 @@ data BasicPlayer = BasicPlayer { basicAccountID :: Maybe AccountID
 
 instance FromJSON BasicPlayer where
   parseJSON (Object o) =
-    BasicPlayer <$> (o .:? "account_id" >>= return . fmap AccountID)
+    BasicPlayer <$> liftM (fmap AccountID) (o .:? "account_id")
                 <*> o .: "player_slot"
                 <*> (heroFromID <$> o .: "hero_id")
   parseJSON _ = mempty

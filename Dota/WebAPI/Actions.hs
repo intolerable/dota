@@ -7,15 +7,10 @@ import Dota.WebAPI.Types
 import APIBuilder
 
 getMatchHistory :: MatchHistorySettings -> WebAPI MatchHistory
-getMatchHistory mhs = do
-  let route = matchHistoryRoute mhs 
-  runRoute route
+getMatchHistory mhs = runRoute $ matchHistoryRoute mhs
 
 getMatchDetails :: MatchID -> WebAPI Match
-getMatchDetails mID = do
-  let route = matchDetailsRoute mID
-  runRoute route
+getMatchDetails mID = runRoute $ matchDetailsRoute mID
 
 getLeagueListing :: WebAPI LeagueListing
-getLeagueListing = do
-  runRoute leagueListingRoute
+getLeagueListing = runRoute leagueListingRoute
