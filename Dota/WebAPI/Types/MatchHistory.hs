@@ -29,7 +29,8 @@ data MatchHistorySettings = MatchHistorySettings
                               , fromLeague :: Maybe LeagueID
                               , withAccount :: Maybe ()
                               , beforeMatch :: Maybe MatchID
-                              , matchesLimit :: Maybe Integer }
+                              , matchesLimit :: Maybe Integer
+                              , tournamentOnly :: Maybe Bool }
   deriving (Show)
 
 instance Default MatchHistorySettings where
@@ -40,7 +41,8 @@ instance Default MatchHistorySettings where
                              , fromLeague = Nothing
                              , withAccount = Nothing
                              , beforeMatch = Nothing
-                             , matchesLimit = Nothing }
+                             , matchesLimit = Nothing
+                             , tournamentOnly = Nothing }
 
 defaultMatchHistorySettings :: MatchHistorySettings
 defaultMatchHistorySettings = def
