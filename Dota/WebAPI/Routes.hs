@@ -26,6 +26,7 @@ matchHistoryRoute mhs = Route [ "GetMatchHistory", "V001" ]
                               , "league_id" =. (T.pack . show <$> fromLeague mhs)
                               , "matches_requested" =. (T.pack . show <$> matchesLimit mhs)
                               , "tournament_games_only" =. (T.pack . show . fromEnum <$> tournamentOnly mhs)
+                              , "game_mode" =. (T.pack . show . fromEnum <$> gameMode mhs)
                               , "date_min" =. (T.pack . show . DateTime.toSeconds <$> afterDate mhs)
                               , "date_max" =. (T.pack . show . DateTime.toSeconds <$> beforeDate mhs)
                               , "start_at_match_id" =. (T.pack . show . pred . unMatchID <$> beforeMatch mhs) ]

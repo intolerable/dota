@@ -2,6 +2,7 @@ module Dota.WebAPI.Types.MatchHistory where
 
 import Dota.WebAPI.Types.League
 import Dota.WebAPI.Types.Match
+import Dota.WebAPI.Types.GameModes
 
 import Control.Applicative
 import Data.Monoid
@@ -30,7 +31,8 @@ data MatchHistorySettings = MatchHistorySettings
                               , withAccount :: Maybe ()
                               , beforeMatch :: Maybe MatchID
                               , matchesLimit :: Maybe Integer
-                              , tournamentOnly :: Maybe Bool }
+                              , tournamentOnly :: Maybe Bool
+                              , gameMode :: Maybe GameMode }
   deriving (Show)
 
 instance Default MatchHistorySettings where
@@ -42,7 +44,8 @@ instance Default MatchHistorySettings where
                              , withAccount = Nothing
                              , beforeMatch = Nothing
                              , matchesLimit = Nothing
-                             , tournamentOnly = Nothing }
+                             , tournamentOnly = Nothing
+                             , gameMode = Nothing }
 
 defaultMatchHistorySettings :: MatchHistorySettings
 defaultMatchHistorySettings = def
