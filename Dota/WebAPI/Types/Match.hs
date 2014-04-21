@@ -1,5 +1,6 @@
 module Dota.WebAPI.Types.Match where
 
+import Dota.WebAPI.Types.GameModes
 import Dota.WebAPI.Types.League
 import Dota.WebAPI.Types.PicksBans
 import Dota.WebAPI.Types.Player
@@ -20,6 +21,7 @@ data Match = Match { matchID :: MatchID
                    , matchLeague :: LeagueID
                    , positiveVotes :: Integer
                    , negativeVotes :: Integer
+                   , matchMode :: GameMode
                    , draft :: Maybe Draft
                    , timeStarted :: DateTime }
   deriving (Show)
@@ -32,6 +34,7 @@ instance FromJSON Match where
           <*> (r .: "leagueid")
           <*> (r .: "positive_votes")
           <*> (r .: "negative_votes")
+          <*> (toEnum <$> r .: "game_mode")
           <*> (r .:? "picks_bans")
           <*> (fromSeconds <$> r .: "start_time")
   parseJSON _ = mempty
