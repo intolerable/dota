@@ -30,7 +30,7 @@ instance FromJSON Player where
                     <*> o .: "deaths"
                     <*> o .: "assists"
     Player <$> liftM (fmap AccountID) (o .: "account_id")
-           <*> (heroFromID <$> o .: "hero_id")
+           <*> (toEnum <$> o .: "hero_id")
            <*> kda'
            <*> o .: "level"
            <*> ((,) <$> o .: "last_hits"
@@ -59,5 +59,5 @@ instance FromJSON BasicPlayer where
   parseJSON (Object o) =
     BasicPlayer <$> liftM (fmap AccountID) (o .:? "account_id")
                 <*> o .: "player_slot"
-                <*> (heroFromID <$> o .: "hero_id")
+                <*> (toEnum <$> o .: "hero_id")
   parseJSON _ = mempty

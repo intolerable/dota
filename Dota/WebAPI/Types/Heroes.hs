@@ -111,6 +111,10 @@ data Hero = UnknownHero
           | Phoenix
   deriving (Show)
 
+instance Enum Hero where
+  fromEnum = fromIntegral . heroToID
+  toEnum = heroFromID . fromIntegral
+
 heroFromID :: Integer -> Hero
 heroFromID 1 = Antimage
 heroFromID 2 = Axe

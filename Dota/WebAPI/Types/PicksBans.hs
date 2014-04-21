@@ -20,7 +20,7 @@ instance FromJSON Draft where
       f (Object o) = do
         isPick <- o .: "is_pick"
         team <- o .: "team"
-        hero <- heroFromID <$> o .: "hero_id"
+        hero <- toEnum <$> o .: "hero_id"
         return (if isPick == Bool True then Pick else Ban, if team == Number 0 then Radiant else Dire, hero)
       f _ = mempty
   parseJSON _ = mempty
