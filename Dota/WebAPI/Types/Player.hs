@@ -51,12 +51,12 @@ buildItems o = (,,,,,) <$> (itemFromID <$> o .: "item_0")
 
 data BasicPlayer = BasicPlayer { basicAccountID :: AccountID
                                , basicPlayerSlot :: Integer
-                               , basicHeroID :: Integer }
+                               , basicHero :: Hero }
   deriving (Show)
 
 instance FromJSON BasicPlayer where
   parseJSON (Object o) =
     BasicPlayer <$> (AccountID <$> (o .: "account_id"))
                 <*> o .: "player_slot"
-                <*> o .: "hero_id"
+                <*> (heroFromID <$> o .: "hero_id")
   parseJSON _ = mempty
