@@ -4,6 +4,7 @@ module Dota.WebAPI.Types
   , module Types ) where
 
 import Dota.WebAPI.Types.PicksBans as Types
+import Dota.WebAPI.Types.GameModes as Types
 import Dota.WebAPI.Types.Heroes as Types
 import Dota.WebAPI.Types.Items as Types
 import Dota.WebAPI.Types.MatchHistory as Types
