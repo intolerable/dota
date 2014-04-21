@@ -11,7 +11,7 @@ import Data.Aeson.Types (Parser)
 newtype AccountID = AccountID Integer
   deriving (Show)
 
-data Player = Player { accountID :: AccountID
+data Player = Player { accountID :: Maybe AccountID
                      , hero :: Hero
                      , kda :: (Integer, Integer, Integer)
                      , level :: Integer
@@ -28,7 +28,7 @@ instance FromJSON Player where
     let kda' = (,,) <$> o .: "kills"
                     <*> o .: "deaths"
                     <*> o .: "assists"
-    Player <$> (AccountID <$> o .: "account_id")
+    Player <$> (o .: "account_id" >>= return . fmap AccountID)
            <*> (heroFromID <$> o .: "hero_id")
            <*> kda'
            <*> o .: "level"
@@ -49,14 +49,14 @@ buildItems o = (,,,,,) <$> (itemFromID <$> o .: "item_0")
                        <*> (itemFromID <$> o .: "item_4")
                        <*> (itemFromID <$> o .: "item_5")
 
-data BasicPlayer = BasicPlayer { basicAccountID :: AccountID
+data BasicPlayer = BasicPlayer { basicAccountID :: Maybe AccountID
                                , basicPlayerSlot :: Integer
                                , basicHero :: Hero }
   deriving (Show)
 
 instance FromJSON BasicPlayer where
   parseJSON (Object o) =
-    BasicPlayer <$> (AccountID <$> (o .: "account_id"))
+    BasicPlayer <$> (o .:? "account_id" >>= return . fmap AccountID)
                 <*> o .: "player_slot"
                 <*> (heroFromID <$> o .: "hero_id")
   parseJSON _ = mempty
