@@ -39,18 +39,8 @@ executable dota
   -- other-extensions:    
   build-depends: 
     base >= 4.6 && < 4.8,
-    aeson,
-    api-builder,
-    bytestring,
-    data-default,
-    datetime,
-    either,
-    HTTP,
-    http-conduit,
-    text,
-    transformers,
-    vector
-  hs-source-dirs:         src/
+    dota
+  hs-source-dirs:         ./
   default-language:    Haskell2010
   default-extensions: OverloadedStrings
 

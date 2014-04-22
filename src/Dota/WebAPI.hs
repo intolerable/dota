@@ -1,7 +1,6 @@
 module Dota.WebAPI 
   ( getCDMatchIDs
   , getDrafts
-  , main
   , module Export ) where
 
 import Dota.WebAPI.Routes as Export
@@ -13,9 +12,6 @@ import Data.DateTime
 import Control.Arrow
 import Data.Function (on)
 import Data.List (groupBy)
-
-main :: IO ()
-main = undefined
 
 getCDMatchIDs :: MatchHistorySettings -> WebAPI [MatchID]
 getCDMatchIDs mhs = do
