@@ -7,5 +7,6 @@ import Dota.WebAPI.Types
 import Test.HUnit
 
 tests :: Test
-tests = TestList [ Tests.WebAPI.Types.Player.tests
-                 , Tests.WebAPI.Types.Heroes.tests ]
+tests = "Types" ~:
+  test [ Tests.WebAPI.Types.Player.tests
+       , Tests.WebAPI.Types.Heroes.tests ]

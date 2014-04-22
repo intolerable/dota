@@ -2,8 +2,12 @@ module Main (main) where
 
 import Tests (tests)
 
-import Control.Monad (void)
+import System.Exit
 import Test.HUnit
 
 main :: IO ()
-main = void $ runTestTT tests
+main = do
+  Counts _ _ es fs <- runTestTT $ TestList [tests]
+  case (es, fs) of
+    (0,0) -> return ()
+    _ -> exitFailure

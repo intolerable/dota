@@ -6,4 +6,4 @@ import Dota.WebAPI
 import Test.HUnit
 
 tests :: Test
-tests = TestList [Types.tests, TestCase $ return ()]
+tests = "Tests" ~: TestList [Types.tests]

@@ -5,4 +5,4 @@ import Test.HUnit
 import Dota.WebAPI.Types.Player
 
 tests :: Test
-tests = TestList []
+tests = "Player" ~: TestList []
