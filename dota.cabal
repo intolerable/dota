@@ -68,3 +68,4 @@ test-suite tests
     dota,
     HUnit
   default-language: Haskell2010
+  ghc-options: -Werror -Wall
