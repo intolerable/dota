@@ -1,9 +1,8 @@
 module Tests (tests) where
 
-import qualified Tests.WebAPI.Types as Types
+import qualified Tests.WebAPI as WebAPI
 
-import Dota.WebAPI
 import Test.HUnit
 
 tests :: Test
-tests = "Tests" ~: TestList [Types.tests]
+tests = "Tests" ~: TestList [ WebAPI.tests ]
