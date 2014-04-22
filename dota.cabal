@@ -30,6 +30,19 @@ library
   default-extensions: OverloadedStrings
   exposed-modules:
     Dota.WebAPI
+    Dota.WebAPI.Actions
+    Dota.WebAPI.Parser
+    Dota.WebAPI.Routes
+    Dota.WebAPI.Types
+    Dota.WebAPI.Types.Basics
+    Dota.WebAPI.Types.GameModes
+    Dota.WebAPI.Types.Heroes
+    Dota.WebAPI.Types.Items
+    Dota.WebAPI.Types.League
+    Dota.WebAPI.Types.Match
+    Dota.WebAPI.Types.MatchHistory
+    Dota.WebAPI.Types.PicksBans
+    Dota.WebAPI.Types.Player
   ghc-options: -Wall
   hs-source-dirs: src/
 
