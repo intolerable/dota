@@ -17,7 +17,7 @@ data GameMode = NoMode
               | CompendiumMatchmaking
               | CaptainsDraft
               | UnknownMode
-  deriving (Show, Read, Eq)
+  deriving (Show, Eq)
 
 instance Enum GameMode where
   fromEnum UnknownMode = -1

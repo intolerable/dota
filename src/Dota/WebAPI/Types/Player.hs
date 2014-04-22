@@ -10,7 +10,7 @@ import Data.Aeson
 import Data.Aeson.Types (Parser)
 
 newtype AccountID = AccountID Integer
-  deriving (Show)
+  deriving (Show, Eq)
 
 data Player = Player { accountID :: Maybe AccountID
                      , hero :: Hero
@@ -22,7 +22,7 @@ data Player = Player { accountID :: Maybe AccountID
                      , heroDamage :: Integer
                      , towerDamage :: Integer
                      , heroHealing :: Integer }
-  deriving (Show)
+  deriving (Show, Eq)
 
 instance FromJSON Player where
   parseJSON (Object o) = do
@@ -53,7 +53,7 @@ buildItems o = (,,,,,) <$> (itemFromID <$> o .: "item_0")
 data BasicPlayer = BasicPlayer { basicAccountID :: Maybe AccountID
                                , basicPlayerSlot :: Integer
                                , basicHero :: Hero }
-  deriving (Show)
+  deriving (Show, Eq)
 
 instance FromJSON BasicPlayer where
   parseJSON (Object o) =

@@ -7,4 +7,4 @@ import Dota.WebAPI.Types.Heroes
 import Dota.WebAPI.Types.Items
 
 data Team = Radiant | Dire
-  deriving (Show)
+  deriving (Show, Eq)

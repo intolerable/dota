@@ -214,7 +214,7 @@ data Item = UnknownItem
           | RingOfAquila
           | RecipeTranquilBoots
           | TranquilBoots
-  deriving (Show)
+  deriving (Show, Eq)
 
 itemFromID :: Integer -> Item
 itemFromID 0 = NoItem
