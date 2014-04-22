@@ -1,6 +1,6 @@
 module Dota.WebAPI.Types.Match where
 
-import Dota.WebAPI.Types.GameModes
+import Dota.WebAPI.Types.Basics
 import Dota.WebAPI.Types.League
 import Dota.WebAPI.Types.PicksBans
 import Dota.WebAPI.Types.Player
@@ -11,9 +11,6 @@ import Data.Aeson
 import Data.DateTime
 
 newtype MatchID = MatchID { unMatchID :: Integer }
-  deriving (Show, Eq)
-
-data Team = Radiant | Dire
   deriving (Show, Eq)
 
 data Match = Match { matchID :: MatchID

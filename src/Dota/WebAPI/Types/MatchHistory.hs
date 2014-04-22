@@ -1,8 +1,8 @@
 module Dota.WebAPI.Types.MatchHistory where
 
+import Dota.WebAPI.Types.Basics
 import Dota.WebAPI.Types.League
 import Dota.WebAPI.Types.Match
-import Dota.WebAPI.Types.GameModes
 
 import Control.Applicative
 import Data.Monoid

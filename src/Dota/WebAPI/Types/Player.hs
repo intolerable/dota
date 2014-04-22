@@ -1,6 +1,5 @@
 module Dota.WebAPI.Types.Player where
 
-import Dota.WebAPI.Types.Heroes
 import Dota.WebAPI.Types.Basics
 
 import Control.Applicative
