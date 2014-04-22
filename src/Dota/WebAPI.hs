@@ -3,13 +3,13 @@ module Dota.WebAPI
   , getDrafts
   , module Export ) where
 
+import Dota.WebAPI.Actions as Export
+import Dota.WebAPI.Parser as Export
 import Dota.WebAPI.Routes as Export
 import Dota.WebAPI.Types as Export
-import Dota.WebAPI.Parser as Export
-import Dota.WebAPI.Actions as Export
 
-import Data.DateTime
 import Control.Arrow
+import Data.DateTime
 import Data.Function (on)
 import Data.List (groupBy)
 

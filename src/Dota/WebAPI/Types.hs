@@ -3,14 +3,14 @@ module Dota.WebAPI.Types
   , WebAPIKey
   , module Types ) where
 
-import Dota.WebAPI.Types.PicksBans as Types
 import Dota.WebAPI.Types.GameModes as Types
 import Dota.WebAPI.Types.Heroes as Types
 import Dota.WebAPI.Types.Items as Types
-import Dota.WebAPI.Types.MatchHistory as Types
-import Dota.WebAPI.Types.Match as Types
-import Dota.WebAPI.Types.Player as Types
 import Dota.WebAPI.Types.League as Types
+import Dota.WebAPI.Types.Match as Types
+import Dota.WebAPI.Types.MatchHistory as Types
+import Dota.WebAPI.Types.PicksBans as Types
+import Dota.WebAPI.Types.Player as Types
 
 import APIBuilder
 import Data.Text (Text)
