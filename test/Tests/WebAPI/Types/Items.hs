@@ -5,8 +5,8 @@ import Test.HUnit
 import Dota.WebAPI.Types.Items
 
 tests :: Test
-tests = test [ testToEnum 
-             , testFromEnum ]
+tests = "Items" ~: test [ testToEnum 
+                        , testFromEnum ]
 
 testToEnum :: Test
 testToEnum = test [ "Item from ID 29 is Boots" ~: itemFromID 29 @?= BootsOfSpeed
