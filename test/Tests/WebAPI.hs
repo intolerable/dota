@@ -1,13 +1,8 @@
 module Tests.WebAPI (tests) where
 
-import qualified Tests.WebAPI.Types.Heroes as Heroes
-import qualified Tests.WebAPI.Types.Player as Player
+import qualified Tests.WebAPI.Types as Types
 
 import Test.HUnit
 
-import Dota.WebAPI
-
 tests :: Test
-tests = "WebAPI" ~:
-  [ Heroes.tests
-  , Player.tests ]
+tests = "WebAPI" ~: do Types.tests

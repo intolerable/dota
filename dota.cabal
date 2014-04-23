@@ -64,7 +64,10 @@ test-suite tests
   main-is: Main.hs
   build-depends:
     base >= 4.6 && < 4.8,
+    api-builder,
+    bytestring,
     Cabal >= 1.18,
+    directory,
     dota,
     HUnit
   default-language: Haskell2010

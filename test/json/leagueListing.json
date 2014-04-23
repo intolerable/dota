@@ -1,0 +1,48 @@
+{
+	"result": {
+		"leagues": [
+			{
+				"name": "#DOTA_Item_WildCardsWest",
+				"leagueid": 2,
+				"description": "#DOTA_Item_Desc_Wild_Cards_West",
+				"tournament_url": "http:\/\/www.dota2.com\/tournaments\/international\/",
+				"itemdef": 15015
+			},
+			{
+				"name": "#DOTA_Item_WildCardsEast",
+				"leagueid": 3,
+				"description": "#DOTA_Item_Desc_Wild_Cards_East",
+				"tournament_url": "http:\/\/www.dota2.com\/tournaments\/international\/",
+				"itemdef": 15016
+			},
+			{
+				"name": "#DOTA_Item_League_TheInternal",
+				"leagueid": 65000,
+				"description": "#DOTA_Item_Desc_League_TheInternal",
+				"tournament_url": "http:\/\/www.dota2.com\/tournaments\/international\/",
+				"itemdef": 15055
+			},
+			{
+				"name": "#DOTA_Item_The_International_2012",
+				"leagueid": 65001,
+				"description": "#DOTA_Item_Desc_League_TheInternational",
+				"tournament_url": "http:\/\/www.dota2.com\/tournaments\/international2012\/mainevent\/results\/champions\/",
+				"itemdef": 15072
+			},
+			{
+				"name": "#DOTA_Item_The_International_East_Qualifiers",
+				"leagueid": 65004,
+				"description": "#DOTA_Item_Desc_The_International_East_Qualifiers",
+				"tournament_url": "http:\/\/www.dota2.com\/tournaments\/international\/announcement\/",
+				"itemdef": 15157
+			},
+			{
+				"name": "#DOTA_Item_The_International_West_Qualifiers",
+				"leagueid": 65005,
+				"description": "#DOTA_Item_Desc_Copy_of_The_International_East_Qualifiers",
+				"tournament_url": "http:\/\/www.dota2.com\/tournaments\/international\/announcement\/",
+				"itemdef": 15158
+			}
+		]
+	}
+}
