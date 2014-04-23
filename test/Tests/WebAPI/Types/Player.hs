@@ -1,13 +1,12 @@
 module Tests.WebAPI.Types.Player (tests) where
 
-import Test.HUnit
-
-import Dota.WebAPI.Types.Player
 import Dota.WebAPI.Types.Basics
+import Dota.WebAPI.Types.Player
 
 import APIBuilder
-import qualified Data.ByteString.Lazy as BS (readFile) 
 import System.Directory (canonicalizePath)
+import Test.HUnit
+import qualified Data.ByteString.Lazy as BS (readFile) 
 
 tests :: Test
 tests = "Player" ~:
