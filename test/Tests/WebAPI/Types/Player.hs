@@ -21,9 +21,11 @@ testPlayer = "testPlayer" ~: do
 
 checkExamplePlayer :: Player -> Assertion
 checkExamplePlayer p = do
+  hero p @?= LegionCommander
   cs p @?= (157,2)
   kda p @?= (1,4,5)
   playerSlot p @?= PlayerSlot Radiant 0
+  level p @?= 16
   items p @?= ( Dust
               , Armlet
               , BlinkDagger
