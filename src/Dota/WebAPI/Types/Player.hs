@@ -75,7 +75,7 @@ instance FromJSON PlayerSlot where
   --   .....SSS: S is the slot (0-4) of the player
   parseJSON (Number n) = do
     let bits = floor n :: Word8
-    let team = if bits `testBit` 7 then Radiant else Dire
+    let team = if bits `testBit` 7 then Dire else Radiant
     let position = bits .&. 7
     pure (PlayerSlot team (fromIntegral position))
   parseJSON _ = mempty
