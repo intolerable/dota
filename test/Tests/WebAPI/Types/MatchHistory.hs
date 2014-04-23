@@ -3,9 +3,9 @@ module Tests.WebAPI.Types.MatchHistory (tests) where
 import Dota.WebAPI.Types.MatchHistory
 
 import APIBuilder
-import qualified Data.ByteString.Lazy as BS
 import System.Directory (canonicalizePath)
 import Test.HUnit
+import qualified Data.ByteString.Lazy as BS
 
 tests :: Test
 tests = "MatchHistory" ~: do
