@@ -1,6 +1,5 @@
 module Dota.WebAPI.Actions where
 
-import Dota.WebAPI.Parser ()
 import Dota.WebAPI.Routes
 import Dota.WebAPI.Types
 

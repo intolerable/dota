@@ -31,7 +31,6 @@ library
   exposed-modules:
     Dota.WebAPI
     Dota.WebAPI.Actions
-    Dota.WebAPI.Parser
     Dota.WebAPI.Routes
     Dota.WebAPI.Types
     Dota.WebAPI.Types.Basics
