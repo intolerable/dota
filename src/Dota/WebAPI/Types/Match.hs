@@ -11,7 +11,7 @@ import Data.Aeson
 import Data.DateTime
 
 newtype MatchID = MatchID { unMatchID :: Integer }
-  deriving (Show, Eq)
+  deriving (Show, Read, Eq)
 
 data Match = Match { matchID :: MatchID
                    , players :: [Player]
@@ -21,7 +21,7 @@ data Match = Match { matchID :: MatchID
                    , matchMode :: GameMode
                    , draft :: Maybe Draft
                    , timeStarted :: DateTime }
-  deriving (Show)
+  deriving (Show, Read, Eq)
 
 instance FromJSON Match where
   parseJSON (Object o) = do
@@ -39,7 +39,7 @@ instance FromJSON Match where
 data BasicMatch = BasicMatch { basicMatchID :: MatchID
                              , basicStartTime :: DateTime
                              , basicPlayers :: [BasicPlayer] }
-  deriving (Show, Eq)
+  deriving (Show, Read, Eq)
 
 instance FromJSON BasicMatch where
   parseJSON (Object o) = do

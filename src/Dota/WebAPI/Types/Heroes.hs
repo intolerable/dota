@@ -109,7 +109,7 @@ data Hero = UnknownHero
           | AbyssalUnderlord
           | Terrorblade
           | Phoenix
-  deriving (Show, Eq)
+  deriving (Show, Read, Eq)
 
 instance Enum Hero where
   fromEnum = fromIntegral . heroToID

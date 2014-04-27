@@ -8,7 +8,7 @@ import Data.Text (Text)
 type LeagueID = Integer
 
 data LeagueListing = LeagueListing { leagues :: [League] }
-  deriving (Show, Eq)
+  deriving (Show, Read, Eq)
 
 instance FromJSON LeagueListing where
   parseJSON (Object o) = do
@@ -20,7 +20,7 @@ data League = League { leagueID :: LeagueID
                      , leagueName :: Text
                      , leagueDescription :: Text
                      , leagueURL :: Text }
-  deriving (Show, Eq)
+  deriving (Show, Read, Eq)
 
 instance FromJSON League where
   parseJSON (Object o) =

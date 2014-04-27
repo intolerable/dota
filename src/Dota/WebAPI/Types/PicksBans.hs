@@ -8,10 +8,10 @@ import Data.Monoid
 import qualified Data.Vector as V
 
 data PickBan = Pick | Ban
-  deriving (Show, Eq)
+  deriving (Show, Read, Eq)
 
 data Draft = Draft [(PickBan, Team, Hero)]
-  deriving (Show, Eq)
+  deriving (Show, Read, Eq)
 
 instance FromJSON Draft where
   parseJSON (Array a) =

@@ -22,7 +22,7 @@ addAPIKey key r@(Route _ params _) = r { urlParams = ("key", Just key):params }
 matchHistoryRoute :: MatchHistorySettings -> Route
 matchHistoryRoute mhs = Route [ "GetMatchHistory", "V001" ]
                               [ "player_name" =. withPlayer mhs
-                              , "hero_id" =. (T.pack . show <$> withHero mhs)
+                              , "hero_id" =. (T.pack . show . fromEnum <$> withHero mhs)
                               , "league_id" =. (T.pack . show <$> fromLeague mhs)
                               , "matches_requested" =. (T.pack . show <$> matchesLimit mhs)
                               , "tournament_games_only" =. (T.pack . show . fromEnum <$> tournamentOnly mhs)

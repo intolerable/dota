@@ -13,7 +13,7 @@ import qualified Data.Text as T
 
 data MatchHistory = MatchHistory { matches :: [BasicMatch]
                                  , resultsRemaining :: Integer }
-  deriving (Show, Eq)
+  deriving (Show, Read, Eq)
 
 instance FromJSON MatchHistory where
   parseJSON (Object o) = do
@@ -24,7 +24,7 @@ instance FromJSON MatchHistory where
 
 data MatchHistorySettings = MatchHistorySettings
                               { withPlayer :: Maybe T.Text
-                              , withHero :: Maybe Integer
+                              , withHero :: Maybe Hero
                               , afterDate :: Maybe DateTime
                               , beforeDate :: Maybe DateTime
                               , fromLeague :: Maybe LeagueID
@@ -33,7 +33,7 @@ data MatchHistorySettings = MatchHistorySettings
                               , matchesLimit :: Maybe Integer
                               , tournamentOnly :: Maybe Bool
                               , gameMode :: Maybe GameMode }
-  deriving (Show, Eq)
+  deriving (Show, Read, Eq)
 
 instance Default MatchHistorySettings where
   def = MatchHistorySettings { withPlayer = Nothing

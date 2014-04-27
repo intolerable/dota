@@ -11,7 +11,7 @@ import Data.Bits
 import Data.Word (Word8)
 
 newtype AccountID = AccountID Integer
-  deriving (Show, Eq)
+  deriving (Show, Read, Eq)
 
 data Player = Player { accountID :: Maybe AccountID
                      , playerSlot :: PlayerSlot
@@ -24,7 +24,7 @@ data Player = Player { accountID :: Maybe AccountID
                      , heroDamage :: Integer
                      , towerDamage :: Integer
                      , heroHealing :: Integer }
-  deriving (Show, Eq)
+  deriving (Show, Read, Eq)
 
 instance FromJSON Player where
   parseJSON (Object o) = do
@@ -56,7 +56,7 @@ buildItems o = (,,,,,) <$> (itemFromID <$> o .: "item_0")
 data BasicPlayer = BasicPlayer { basicAccountID :: Maybe AccountID
                                , basicPlayerSlot :: Integer
                                , basicHero :: Hero }
-  deriving (Show, Eq)
+  deriving (Show, Read, Eq)
 
 instance FromJSON BasicPlayer where
   parseJSON (Object o) =
@@ -67,7 +67,7 @@ instance FromJSON BasicPlayer where
 
 data PlayerSlot = PlayerSlot { playerTeam :: Team
                              , teamPosition :: Int}
-  deriving (Show, Eq)
+  deriving (Show, Read, Eq)
 
 instance FromJSON PlayerSlot where
   -- player slot is a byte where
