@@ -30,14 +30,14 @@ matchHistoryRoute mhs = Route [ "GetMatchHistory", "V001" ]
                               , "date_min" =. (T.pack . show . DateTime.toSeconds <$> afterDate mhs)
                               , "date_max" =. (T.pack . show . DateTime.toSeconds <$> beforeDate mhs)
                               , "start_at_match_id" =. (T.pack . show . pred . unMatchID <$> beforeMatch mhs) ]
-                              "GET"
+                              GET
 
 matchDetailsRoute :: MatchID -> Route
 matchDetailsRoute mID = Route [ "GetMatchDetails", "V001" ]
                               [ "match_id" =. (Just . T.pack . show $ unMatchID mID) ]
-                              "GET"
+                              GET
 
 leagueListingRoute :: Route
 leagueListingRoute = Route [ "GetLeagueListing", "v1" ]
                            [ ]
-                           "GET"
+                           GET
