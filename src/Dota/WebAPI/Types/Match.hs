@@ -11,7 +11,7 @@ import Data.Aeson
 import Data.DateTime
 
 newtype MatchID = MatchID { unMatchID :: Integer }
-  deriving (Show, Read, Eq)
+  deriving (Show, Read, Eq, Ord)
 
 data Match = Match { matchID :: MatchID
                    , players :: [Player]
