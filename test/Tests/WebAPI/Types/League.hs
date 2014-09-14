@@ -1,7 +1,7 @@
 module Tests.WebAPI.Types.League (tests) where
 
 import Test.HUnit
-import APIBuilder
+import Network.API.Builder
 import qualified Data.ByteString.Lazy as BS
 import System.Directory (canonicalizePath)
 

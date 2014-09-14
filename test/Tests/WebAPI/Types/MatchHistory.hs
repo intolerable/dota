@@ -5,7 +5,7 @@ import Dota.WebAPI.Types.Match
 import Dota.WebAPI.Types.MatchHistory
 import Dota.WebAPI.Types.Player
 
-import APIBuilder
+import Network.API.Builder
 import System.Directory (canonicalizePath)
 import Test.HUnit
 import qualified Data.ByteString.Lazy as BS
@@ -20,7 +20,7 @@ tests = "MatchHistory" ~: do
 checkMatchHistory :: MatchHistory -> Assertion
 checkMatchHistory h = do
   resultsRemaining h @?= 475
-  length (matches h) @?= 25 
+  length (matches h) @?= 25
   let m = head $ matches h
   basicMatchID m @?= MatchID 624035295
   map basicHero (basicPlayers m) @?= [ UnknownHero
