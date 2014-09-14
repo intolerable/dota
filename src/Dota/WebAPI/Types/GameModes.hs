@@ -1,5 +1,8 @@
 module Dota.WebAPI.Types.GameModes where
 
+import Control.Applicative
+import Data.Aeson
+
 data GameMode = NoMode
               | AllPick
               | CaptainsMode
@@ -18,6 +21,9 @@ data GameMode = NoMode
               | CaptainsDraft
               | UnknownMode
   deriving (Show, Read, Eq)
+
+instance FromJSON GameMode where
+  parseJSON j = toEnum <$> parseJSON j
 
 instance Enum GameMode where
   fromEnum UnknownMode = -1

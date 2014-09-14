@@ -13,6 +13,9 @@ import Data.Word (Word8)
 newtype AccountID = AccountID Integer
   deriving (Show, Read, Eq)
 
+instance FromJSON AccountID where
+  parseJSON j = AccountID <$> parseJSON j
+
 data Player = Player { accountID :: Maybe AccountID
                      , playerSlot :: PlayerSlot
                      , hero :: Hero

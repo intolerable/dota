@@ -1,5 +1,8 @@
 module Dota.WebAPI.Types.Heroes where
 
+import Control.Applicative
+import Data.Aeson
+
 data Hero = UnknownHero
           | Antimage
           | Axe
@@ -114,6 +117,9 @@ data Hero = UnknownHero
 instance Enum Hero where
   fromEnum = fromIntegral . heroToID
   toEnum = heroFromID . fromIntegral
+
+instance FromJSON Hero where
+  parseJSON j = toEnum <$> parseJSON j
 
 heroFromID :: Integer -> Hero
 heroFromID 1 = Antimage

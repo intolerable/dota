@@ -11,9 +11,8 @@ data LeagueListing = LeagueListing { leagues :: [League] }
   deriving (Show, Read, Eq)
 
 instance FromJSON LeagueListing where
-  parseJSON (Object o) = do
-    r <- o .: "result"
-    LeagueListing <$> r .: "leagues"
+  parseJSON (Object o) =
+    LeagueListing <$> (o .: "result" >>= (.: "leagues"))
   parseJSON _ = mempty
 
 data League = League { leagueID :: LeagueID

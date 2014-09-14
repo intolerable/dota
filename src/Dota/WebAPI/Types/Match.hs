@@ -5,13 +5,20 @@ import Dota.WebAPI.Types.League
 import Dota.WebAPI.Types.PicksBans
 import Dota.WebAPI.Types.Player
 
+import Network.API.Builder.Query
 import Control.Applicative
 import Data.Monoid
 import Data.Aeson
 import Data.DateTime
 
 newtype MatchID = MatchID { unMatchID :: Integer }
-  deriving (Show, Read, Eq, Ord)
+  deriving (Show, Read, Eq, Ord, Enum)
+
+instance FromJSON MatchID where
+  parseJSON j = MatchID <$> parseJSON j
+
+instance ToQuery MatchID where
+  toQuery = toQuery . unMatchID
 
 data Match = Match { matchID :: MatchID
                    , players :: [Player]
@@ -26,13 +33,13 @@ data Match = Match { matchID :: MatchID
 instance FromJSON Match where
   parseJSON (Object o) = do
     r <- o .: "result"
-    Match <$> (MatchID <$> r .: "match_id")
-          <*> (r .: "players")
-          <*> (r .: "leagueid")
-          <*> (r .: "positive_votes")
-          <*> (r .: "negative_votes")
-          <*> (toEnum <$> r .: "game_mode")
-          <*> (r .:? "picks_bans")
+    Match <$> r .: "match_id"
+          <*> r .: "players"
+          <*> r .: "leagueid"
+          <*> r .: "positive_votes"
+          <*> r .: "negative_votes"
+          <*> r .: "game_mode"
+          <*> r .:? "picks_bans"
           <*> (fromSeconds <$> r .: "start_time")
   parseJSON _ = mempty
 
@@ -43,8 +50,7 @@ data BasicMatch = BasicMatch { basicMatchID :: MatchID
 
 instance FromJSON BasicMatch where
   parseJSON (Object o) = do
-    ps <- fmap parseJSON (o .: "players")
-    BasicMatch <$> (MatchID <$> (o .: "match_id"))
+    BasicMatch <$> o .: "match_id"
                <*> (fromSeconds <$> (o .: "start_time"))
-               <*> ps
+               <*> o .: "players"
   parseJSON _ = mempty
