@@ -2,7 +2,7 @@ module Dota.WebAPI.Routes where
 
 import Dota.WebAPI.Types
 
-import APIBuilder
+import Network.API.Builder
 import Control.Applicative ((<$>))
 import qualified Data.DateTime as DateTime (toSeconds)
 import qualified Data.Text as T
@@ -11,7 +11,7 @@ builder :: Builder
 builder = Builder "Dota WebAPI" "https://api.steampowered.com/IDOTA2Match_570" id id
 
 webAPI :: WebAPIKey -> WebAPI a -> IO (Either (APIError ()) a)
-webAPI key act = 
+webAPI key act =
   runAPI builder key $ do
     customizeRoute (addAPIKey key)
     act
@@ -30,14 +30,14 @@ matchHistoryRoute mhs = Route [ "GetMatchHistory", "V001" ]
                               , "date_min" =. (T.pack . show . DateTime.toSeconds <$> afterDate mhs)
                               , "date_max" =. (T.pack . show . DateTime.toSeconds <$> beforeDate mhs)
                               , "start_at_match_id" =. (T.pack . show . pred . unMatchID <$> beforeMatch mhs) ]
-                              GET
+                              "GET"
 
 matchDetailsRoute :: MatchID -> Route
 matchDetailsRoute mID = Route [ "GetMatchDetails", "V001" ]
                               [ "match_id" =. (Just . T.pack . show $ unMatchID mID) ]
-                              GET
+                              "GET"
 
 leagueListingRoute :: Route
 leagueListingRoute = Route [ "GetLeagueListing", "v1" ]
                            [ ]
-                           GET
+                           "GET"

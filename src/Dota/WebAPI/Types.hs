@@ -12,7 +12,7 @@ import Dota.WebAPI.Types.MatchHistory as Types
 import Dota.WebAPI.Types.PicksBans as Types
 import Dota.WebAPI.Types.Player as Types
 
-import APIBuilder
+import Network.API.Builder
 import Data.Text (Text)
 
 type WebAPI a = API WebAPIKey () a

@@ -3,7 +3,7 @@ module Dota.WebAPI.Actions where
 import Dota.WebAPI.Routes
 import Dota.WebAPI.Types
 
-import APIBuilder
+import Network.API.Builder
 
 getMatchHistory :: MatchHistorySettings -> WebAPI MatchHistory
 getMatchHistory mhs = runRoute $ matchHistoryRoute mhs
