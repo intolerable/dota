@@ -12,7 +12,7 @@ builder = basicBuilder "Dota WebAPI"
 
 webAPI :: WebAPIKey -> WebAPI a -> IO (Either (APIError ()) a)
 webAPI key act =
-  runAPI builder key $ do
+  execAPI builder key $ do
     customizeRoute (addAPIKey key)
     act
 
